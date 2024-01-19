@@ -8,6 +8,6 @@ def feature_engineering():
     for column in cols:
         data[column] = labelencoder.fit_transform(data[column])
     data.to_csv("clean_artifact.csv", index=False)
-    print("=========================fffffffffffffffffffffffffffffffffffffffffff",data)
+    #print("=========================fffffffffffffffffffffffffffffffffffffffffff",data)
     return data
 feature_engineering()
