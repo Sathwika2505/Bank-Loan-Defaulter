@@ -15,6 +15,7 @@ from PIL import Image
 a =[]
 def data_visualization():
     data = data_preprocess()
+    print("visualization data-------", data.head())
     cols = ['Grade','Sub Grade','Verification Status','Loan Title','Application Type','Initial List Status']
     labelencoder = LabelEncoder()
     for column in cols:
