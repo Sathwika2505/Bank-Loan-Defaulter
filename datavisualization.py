@@ -15,17 +15,15 @@ from PIL import Image
 a =[]
 def data_visualization():
     data = data_preprocess()
-    print(data.head())
     cols = ['Grade','Sub Grade','Verification Status','Loan Title','Application Type','Initial List Status']
     labelencoder = LabelEncoder()
     for column in cols:
         data[column] = labelencoder.fit_transform(data[column])
         print(data[column])
-    col_for_visualisation = ['Interest Rate','Debit to Income','Total Received Interest']
     col=list(data.columns)
     col.remove("Loan Status")
     print(col)
-    for i in col_for_visualisation:
+    for i in col:
         fig = px.box(data, y=i)
         fig.update_layout(template='plotly_dark')
         #fig.update_layout(plot_bgcolor = "plotly_dark")
@@ -34,7 +32,7 @@ def data_visualization():
         # fig.show()
         fig.write_image(f"{i}.jpg")
         # a.append(fig)
-    for i in cols:
+    for i in col:
         fig = ff.create_distplot([data[i].values],group_labels=[i])
         fig.update_layout(template='plotly_dark')
         #fig.update_layout(plot_bgcolor = "plotly_dark")
